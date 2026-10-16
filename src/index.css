@@ -1,0 +1,128 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --bg-surface: #F8F9FA;
+    --text-primary: #1F2937;
+    --text-secondary: #4B5563;
+  }
+
+  html, body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    background-color: #F8F9FA;
+    color: var(--text-primary);
+    font-family: -apple-system, BlinkMacSystemFont, "Google Sans", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    user-select: none;
+    -webkit-user-select: none;
+  }
+
+  #root {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+  }
+}
+
+/* Google Labs exact entrance animation using independent scale & opacity properties */
+@keyframes svg-shape-enter {
+  0% {
+    scale: 0.5;
+    filter: blur(7px);
+    opacity: 0;
+  }
+  55% {
+    filter: blur(2px);
+    opacity: 1;
+  }
+  100% {
+    scale: 1;
+    filter: blur(0);
+    opacity: 1;
+  }
+}
+
+.svg-shape {
+  cursor: grab;
+  will-change: transform, scale;
+  touch-action: none;
+  transition: filter 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.svg-shape:hover {
+  filter: brightness(1.03) drop-shadow(0 8px 20px rgba(0, 0, 0, 0.06));
+}
+
+.svg-shape:active {
+  cursor: grabbing;
+}
+
+.is-dragging {
+  cursor: grabbing !important;
+}
+
+.is-dragging .svg-shape {
+  cursor: grabbing !important;
+}
+
+/* Entrance stagger animation class */
+.shape-enter-anim {
+  animation: svg-shape-enter 1.1s cubic-bezier(0.22, 1, 0.36, 1) both;
+  animation-delay: calc(var(--i, 0) * 70ms);
+}
+
+/* Google Labs 5-Layer Progressive Multi-Stop Feathered Header Blur */
+.header__blur {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 110px;
+  pointer-events: none;
+  z-index: 0;
+  background: linear-gradient(to bottom, rgba(248, 249, 250, 0.72) 0%, rgba(248, 249, 250, 0.25) 55%, transparent 100%);
+}
+
+.header__blur-layer {
+  position: absolute;
+  inset: 0;
+  backdrop-filter: blur(var(--blur));
+  -webkit-backdrop-filter: blur(var(--blur));
+  mask-repeat: no-repeat;
+  mask-size: 100% 100%;
+  -webkit-mask-repeat: no-repeat;
+  -webkit-mask-size: 100% 100%;
+}
+
+.header__blur-layer--1 {
+  --blur: 3px;
+  mask-image: linear-gradient(to bottom, transparent 0%, transparent 40%, #000 60%, #000 80%, transparent 100%);
+  -webkit-mask-image: linear-gradient(to bottom, transparent 0%, transparent 40%, #000 60%, #000 80%, transparent 100%);
+}
+
+.header__blur-layer--2 {
+  --blur: 7px;
+  mask-image: linear-gradient(to bottom, transparent 0%, transparent 20%, #000 40%, #000 60%, transparent 80%, transparent 100%);
+  -webkit-mask-image: linear-gradient(to bottom, transparent 0%, transparent 20%, #000 40%, #000 60%, transparent 80%, transparent 100%);
+}
+
+.header__blur-layer--3 {
+  --blur: 15px;
+  mask-image: linear-gradient(to bottom, transparent 0%, #000 20%, #000 40%, transparent 60%, transparent 100%);
+  -webkit-mask-image: linear-gradient(to bottom, transparent 0%, #000 20%, #000 40%, transparent 60%, transparent 100%);
+}
+
+.header__blur-layer--4 {
+  --blur: 26px;
+  mask-image: linear-gradient(to bottom, #000 0%, #000 20%, transparent 40%, transparent 100%);
+  -webkit-mask-image: linear-gradient(to bottom, #000 0%, #000 20%, transparent 40%, transparent 100%);
+}
+
+.header__blur-layer--5 {
+  --blur: 42px;
+  mask-image: linear-gradient(to bottom, #000 0%, transparent 35%, transparent 100%);
+  -webkit-mask-image: linear-gradient(to bottom, #000 0%, transparent 35%, transparent 100%);
+}
