@@ -13,7 +13,7 @@ import {
   getLocalSiteSettings
 } from './lib/portfolioService';
 import { Sparkles, X, Mail } from 'lucide-react';
-import { GithubIcon, TwitterIcon, DiscordIcon, RedditIcon } from './components/Icons';
+import { GithubIcon, TwitterIcon, DiscordIcon, RedditIcon, LinkedinIcon, InstagramIcon } from './components/Icons';
 
 // Strictly code-split: Regular visitors on (/) NEVER download the AdminPortal bundle
 const AdminPortal = lazy(() => import('./pages/AdminPortal'));
@@ -96,7 +96,7 @@ export function App() {
   // Public Live View (/) — 100% pure portfolio playground with zero CMS UI
   return (
     <div className="w-screen h-screen overflow-hidden bg-[#F8F9FA] text-neutral-900 select-none relative">
-      {/* Google Labs 5-Layer Blurred Header */}
+      {/* 5-Layer Feathered Blurred Header */}
       <Header
         siteSettings={siteSettings}
         onOpenAbout={() => setIsAboutOpen(true)}
@@ -133,7 +133,7 @@ export function App() {
             <div className="flex items-center justify-between">
               <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-50 text-emerald-800 text-xs font-mono">
                 <Sparkles className="w-3.5 h-3.5 text-emerald-600" />
-                <span>{siteSettings.aboutBadge || 'About Portfolio Labs'}</span>
+                <span>{siteSettings.aboutBadge || 'Creative Technologist'}</span>
               </div>
               <button
                 onClick={() => setIsAboutOpen(false)}
@@ -143,7 +143,7 @@ export function App() {
               </button>
             </div>
             <h3 className="text-2xl font-semibold text-neutral-900 tracking-tight">
-              {siteSettings.aboutTitle || 'Interactive Physics Playground'}
+              {siteSettings.aboutTitle || 'Muhammad Nurrudin Praseptyo'}
             </h3>
             {(siteSettings.aboutParagraphs || []).map((para, idx) => (
               <p key={idx} className="text-sm text-neutral-600 leading-relaxed">
@@ -187,15 +187,38 @@ export function App() {
                   <span className="text-xs text-neutral-400 font-mono">Email</span>
                 </a>
               )}
-              <div className="grid grid-cols-4 gap-2 pt-2">
+              <div className="flex flex-wrap gap-2.5 pt-2">
                 {siteSettings.socialLinks.github && (
                   <a
                     href={siteSettings.socialLinks.github}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="p-3 rounded-2xl bg-neutral-50 hover:bg-neutral-100 border border-neutral-200/80 flex items-center justify-center text-neutral-700 transition-colors"
+                    className="flex-1 min-w-[70px] p-3 rounded-2xl bg-neutral-50 hover:bg-neutral-100 border border-neutral-200/80 flex items-center justify-center text-neutral-700 hover:text-black transition-colors"
+                    aria-label="GitHub"
                   >
                     <GithubIcon className="w-5 h-5" />
+                  </a>
+                )}
+                {siteSettings.socialLinks.linkedin && (
+                  <a
+                    href={siteSettings.socialLinks.linkedin}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex-1 min-w-[70px] p-3 rounded-2xl bg-neutral-50 hover:bg-neutral-100 border border-neutral-200/80 flex items-center justify-center text-neutral-700 hover:text-black transition-colors"
+                    aria-label="LinkedIn"
+                  >
+                    <LinkedinIcon className="w-5 h-5" />
+                  </a>
+                )}
+                {siteSettings.socialLinks.instagram && (
+                  <a
+                    href={siteSettings.socialLinks.instagram}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex-1 min-w-[70px] p-3 rounded-2xl bg-neutral-50 hover:bg-neutral-100 border border-neutral-200/80 flex items-center justify-center text-neutral-700 hover:text-black transition-colors"
+                    aria-label="Instagram"
+                  >
+                    <InstagramIcon className="w-5 h-5" />
                   </a>
                 )}
                 {siteSettings.socialLinks.twitter && (
@@ -203,7 +226,8 @@ export function App() {
                     href={siteSettings.socialLinks.twitter}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="p-3 rounded-2xl bg-neutral-50 hover:bg-neutral-100 border border-neutral-200/80 flex items-center justify-center text-neutral-700 transition-colors"
+                    className="flex-1 min-w-[70px] p-3 rounded-2xl bg-neutral-50 hover:bg-neutral-100 border border-neutral-200/80 flex items-center justify-center text-neutral-700 hover:text-black transition-colors"
+                    aria-label="X / Twitter"
                   >
                     <TwitterIcon className="w-4 h-4" />
                   </a>
@@ -213,7 +237,8 @@ export function App() {
                     href={siteSettings.socialLinks.discord}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="p-3 rounded-2xl bg-neutral-50 hover:bg-neutral-100 border border-neutral-200/80 flex items-center justify-center text-neutral-700 transition-colors"
+                    className="flex-1 min-w-[70px] p-3 rounded-2xl bg-neutral-50 hover:bg-neutral-100 border border-neutral-200/80 flex items-center justify-center text-neutral-700 hover:text-black transition-colors"
+                    aria-label="Discord"
                   >
                     <DiscordIcon className="w-5 h-5" />
                   </a>
@@ -223,7 +248,8 @@ export function App() {
                     href={siteSettings.socialLinks.reddit}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="p-3 rounded-2xl bg-neutral-50 hover:bg-neutral-100 border border-neutral-200/80 flex items-center justify-center text-neutral-700 transition-colors"
+                    className="flex-1 min-w-[70px] p-3 rounded-2xl bg-neutral-50 hover:bg-neutral-100 border border-neutral-200/80 flex items-center justify-center text-neutral-700 hover:text-black transition-colors"
+                    aria-label="Reddit"
                   >
                     <RedditIcon className="w-5 h-5" />
                   </a>

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import {
-  GOOGLE_LABS_PALETTE,
+  CURATED_PALETTE,
   type Project,
   type ShapeType,
   type SiteSettings,
@@ -174,7 +174,7 @@ export default function AdminPortal() {
       ...EMPTY_PROJECT,
       id: slug,
       order: projects.length,
-      color: GOOGLE_LABS_PALETTE[projects.length % GOOGLE_LABS_PALETTE.length].hex
+      color: CURATED_PALETTE[projects.length % CURATED_PALETTE.length].hex
     });
     setIsCreatingNew(true);
   };
@@ -700,11 +700,11 @@ export default function AdminPortal() {
                     </span>
                   </div>
 
-                  {/* Shape Type & Google Labs Color Swatches */}
+                  {/* Shape Type & Color Swatches */}
                   <div className="lg:col-span-8 space-y-5">
                     <div>
                       <label className="block text-xs font-mono uppercase text-neutral-500 mb-2">
-                        1. Select Google Labs Geometry
+                        1. Select Interactive Geometry
                       </label>
                       <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
                         {(['hexagon', 'circle', 'square', 'clover'] as ShapeType[]).map((shape) => {
@@ -737,10 +737,10 @@ export default function AdminPortal() {
 
                     <div>
                       <label className="block text-xs font-mono uppercase text-neutral-500 mb-2">
-                        2. Select Shape Color (Google Labs Palette or Custom Hex)
+                        2. Select Shape Color (Curated Palette or Custom Hex)
                       </label>
                       <div className="flex flex-wrap items-center gap-2.5">
-                        {GOOGLE_LABS_PALETTE.map((swatch) => (
+                        {CURATED_PALETTE.map((swatch) => (
                           <button
                             key={swatch.hex}
                             type="button"
@@ -1354,7 +1354,7 @@ export default function AdminPortal() {
                   onChange={(e) =>
                     setSiteSettings({ ...siteSettings, brandName: e.target.value })
                   }
-                  placeholder="Google Labs"
+                  placeholder="Muhammad Nurrudin Praseptyo"
                   className="w-full px-3.5 py-2.5 rounded-xl border border-neutral-200 text-sm"
                   required
                 />
@@ -1369,7 +1369,7 @@ export default function AdminPortal() {
                   onChange={(e) =>
                     setSiteSettings({ ...siteSettings, contactEmail: e.target.value })
                   }
-                  placeholder="hello@example.com"
+                  placeholder="contact@mnpraseptyo.com"
                   className="w-full px-3.5 py-2.5 rounded-xl border border-neutral-200 text-sm"
                 />
               </div>
@@ -1426,7 +1426,7 @@ export default function AdminPortal() {
                 Header Social Icon URLs
               </h3>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                {(['github', 'twitter', 'discord', 'reddit', 'linkedin'] as const).map((network) => (
+                {(['github', 'linkedin', 'instagram', 'twitter', 'discord', 'reddit'] as const).map((network) => (
                   <div key={network}>
                     <label className="block text-xs font-medium capitalize text-neutral-700 mb-1">
                       {network} URL

@@ -36,11 +36,12 @@ export interface SiteSettings {
     discord?: string;
     reddit?: string;
     linkedin?: string;
+    instagram?: string;
   };
   adminWhitelistEmails: string[];
 }
 
-export const GOOGLE_LABS_PALETTE = [
+export const CURATED_PALETTE = [
   { name: 'Coral Orange', hex: '#FF864A' },
   { name: 'Electric Blue', hex: '#5E9BFF' },
   { name: 'Mint Green', hex: '#48F08B' },
@@ -52,20 +53,18 @@ export const GOOGLE_LABS_PALETTE = [
 ] as const;
 
 export const DEFAULT_SITE_SETTINGS: SiteSettings = {
-  brandName: 'Google Labs',
-  aboutBadge: 'About Portfolio Labs',
-  aboutTitle: 'Interactive Physics Playground',
+  brandName: 'Muhammad Nurrudin Praseptyo',
+  aboutBadge: 'Creative Technologist',
+  aboutTitle: 'Muhammad Nurrudin Praseptyo',
   aboutParagraphs: [
-    'This portfolio is an exact architectural replication of Google Labs’ interactive physics hero. Built with Matter.js rigid-body physics, DOM SVG rendering, and progressive 5-layer blurred glass.',
-    'Every shape is an interactive container holding a software engineering project. Tap any shape to view the case study, metrics, and live demo.'
+    'I am Muhammad Nurrudin Praseptyo, a creative engineer and full-stack technologist focused on crafting interactive digital experiences, generative systems, and high-performance software.',
+    'Every tumbling shape in this physics playground represents a project or experiment. Tap or toss any shape to explore case studies, architectural breakdowns, live demos, and technical metrics.'
   ],
-  contactEmail: 'hello@example.com',
+  contactEmail: 'contact@mnpraseptyo.com',
   socialLinks: {
-    github: 'https://github.com',
-    twitter: 'https://x.com',
-    discord: 'https://discord.com',
-    reddit: 'https://reddit.com',
-    linkedin: 'https://linkedin.com'
+    github: 'https://github.com/ThioNP',
+    linkedin: 'https://linkedin.com/in/mnpraseptyo',
+    instagram: 'https://instagram.com/mnpraseptyo',
   },
   adminWhitelistEmails: []
 };

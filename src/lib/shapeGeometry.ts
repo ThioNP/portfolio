@@ -39,7 +39,7 @@ export const SHAPE_GEOMETRIES: Record<ShapeType, ShapeDefinition> = {
 };
 
 /**
- * Samples vertices along an SVG path matching Google Labs' algorithm
+ * Samples vertices along an SVG path using adaptive polygonal subdivision
  */
 export function samplePathToVertices(
   pathData: string,

@@ -15,8 +15,8 @@ import {
 } from '../data/projects';
 import { getFirebaseInstances, isFirebaseConfigured } from './firebase';
 
-const LOCAL_PROJECTS_KEY = 'portfolio_cms_projects_v1';
-const LOCAL_SETTINGS_KEY = 'portfolio_cms_site_settings_v1';
+const LOCAL_PROJECTS_KEY = 'portfolio_cms_projects_v2';
+const LOCAL_SETTINGS_KEY = 'portfolio_cms_site_settings_v2';
 
 function normalizeProjects(list: Project[]): Project[] {
   return [...list]
@@ -304,7 +304,7 @@ export async function saveSiteSettingsToBackend(settings: SiteSettings): Promise
   const instances = getFirebaseInstances();
   if (instances) {
     await setDoc(doc(instances.db, 'settings', 'site'), {
-      brandName: settings.brandName.trim() || 'Portfolio Labs',
+      brandName: settings.brandName.trim() || 'Muhammad Nurrudin Praseptyo',
       aboutBadge: settings.aboutBadge.trim(),
       aboutTitle: settings.aboutTitle.trim(),
       aboutParagraphs: settings.aboutParagraphs.filter((p) => p.trim().length > 0),
@@ -332,7 +332,7 @@ export async function seedFirestoreDatabase(): Promise<void> {
     batch.set(doc(instances.db, 'projects', proj.id), sanitizeProjectForFirestore(proj));
   });
   batch.set(doc(instances.db, 'settings', 'site'), {
-    brandName: settings.brandName.trim() || 'Portfolio Labs',
+    brandName: settings.brandName.trim() || 'Muhammad Nurrudin Praseptyo',
     aboutBadge: settings.aboutBadge.trim(),
     aboutTitle: settings.aboutTitle.trim(),
     aboutParagraphs: settings.aboutParagraphs.filter((p) => p.trim().length > 0),

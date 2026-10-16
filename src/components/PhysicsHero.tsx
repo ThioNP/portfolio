@@ -67,7 +67,7 @@ export const PhysicsHero: React.FC<PhysicsHeroProps> = React.memo(({ projects = 
     const isMobile = width < 640;
     const isTablet = width >= 640 && width < 1024;
 
-    // Google Labs scale factor:
+    // Responsive scale factor:
     // Scale calibrated so shapes tumble comfortably into 2 tiers
     const baseShapeSize = isMobile 
       ? Math.min(width * 0.42, 160) 
@@ -75,12 +75,12 @@ export const PhysicsHero: React.FC<PhysicsHeroProps> = React.memo(({ projects = 
         ? Math.min(width * 0.26, 210) 
         : Math.min(width * 0.22, 270);
 
-    // 1. Create Engine & Runner matching Google Labs parameters
+    // 1. Create Engine & Runner parameters
     const engine = Matter.Engine.create({
       positionIterations: 8,
       velocityIterations: 6,
     });
-    engine.gravity.y = 1.0; // Google Labs natural gravity
+    engine.gravity.y = 1.0; // Natural downward gravity
 
     const runner = Matter.Runner.create({ delta: 1000 / 60 });
 
@@ -126,12 +126,12 @@ export const PhysicsHero: React.FC<PhysicsHeroProps> = React.memo(({ projects = 
       ? (mobilePool.length > 0 ? mobilePool : publishedList).slice(0, 5)
       : publishedList;
 
-    // Google Labs horizontal spacing distributions:
+    // Organic horizontal spacing distributions:
     // On mobile: sH = [0.18, 0.45, 0.82, 0.32, 0.65]
     // On desktop: width / (count + 1) * (i + 1)
     const mobileFractions = [0.18, 0.45, 0.82, 0.32, 0.65];
 
-    // Google Labs vertical cascading drop formula:
+    // Vertical cascading drop formula:
     // Every shape starts completely ABOVE the viewport and drops in sequentially
     const initialTopOffset = baseShapeSize / 2 + 120;
     const verticalCascadeStep = baseShapeSize * 0.55 + 40;
@@ -158,7 +158,7 @@ export const PhysicsHero: React.FC<PhysicsHeroProps> = React.memo(({ projects = 
       // Initial subtle rotation (-0.15 to +0.15 rad) for realistic tumbling
       const initialAngle = (Math.random() - 0.5) * 0.3;
 
-      // Generate physics body matching Google Labs options
+      // Generate physics body
       let body: Matter.Body;
       const bodyOptions: Matter.IBodyDefinition = {
         friction: 0.618,
@@ -189,7 +189,7 @@ export const PhysicsHero: React.FC<PhysicsHeroProps> = React.memo(({ projects = 
         y: (body.bounds.min.y + body.bounds.max.y) / 2 - body.position.y,
       };
 
-      // Create DOM SVG Element matching Google Labs
+      // Create DOM SVG Element
       const el = document.createElement('div');
       el.className = 'absolute top-0 left-0 svg-shape shape-enter-anim pointer-events-auto';
       el.style.width = `${targetSize}px`;
@@ -329,7 +329,7 @@ export const PhysicsHero: React.FC<PhysicsHeroProps> = React.memo(({ projects = 
 
     Matter.Composite.add(engine.world, mouseConstraint);
 
-    // 5. Physics Tick Sync -> Update DOM Transforms with exact Google Labs rotation matrix
+    // 5. Physics Tick Sync -> Update DOM Transforms with rotation matrix
     Matter.Events.on(engine, 'afterUpdate', () => {
       instancesRef.current.forEach(({ body, element, halfSize, offset }) => {
         const cos = Math.cos(body.angle);
@@ -395,11 +395,11 @@ export const PhysicsHero: React.FC<PhysicsHeroProps> = React.memo(({ projects = 
         }`}
         style={{ touchAction: 'pan-y' }}
       >
-        {/* Crisp Ground Line Indicator (Google Labs signature bottom border) */}
+        {/* Crisp Ground Line Indicator */}
         <div className="absolute bottom-0 left-0 right-0 h-[1.5px] bg-neutral-900/80 z-10 pointer-events-none" />
       </div>
 
-      {/* Floating Tooltip Pill (Google Labs style) */}
+      {/* Floating Tooltip Pill */}
       {hoveredProject && !isDragging && (
         <div
           className="fixed pointer-events-none z-50 transition-transform duration-75 ease-out hidden sm:block"

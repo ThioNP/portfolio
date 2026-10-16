@@ -1,6 +1,6 @@
 import React from 'react';
 import { FlaskConical } from 'lucide-react';
-import { DiscordIcon, RedditIcon, TwitterIcon, GithubIcon } from './Icons';
+import { DiscordIcon, RedditIcon, TwitterIcon, GithubIcon, LinkedinIcon, InstagramIcon } from './Icons';
 import { DEFAULT_SITE_SETTINGS, type SiteSettings } from '../data/projects';
 
 interface HeaderProps {
@@ -18,7 +18,7 @@ export const Header: React.FC<HeaderProps> = ({
 
   return (
     <header className="fixed top-0 left-0 right-0 z-40 h-20 transition-all select-none">
-      {/* Google Labs 5-Layer Progressive Feathered Blur */}
+      {/* 5-Layer Progressive Feathered Blur */}
       <div aria-hidden="true" className="header__blur">
         <span className="header__blur-layer header__blur-layer--1" />
         <span className="header__blur-layer header__blur-layer--2" />
@@ -34,7 +34,7 @@ export const Header: React.FC<HeaderProps> = ({
             <FlaskConical className="w-5 h-5 text-neutral-900 stroke-[2.2]" />
           </div>
           <span className="font-medium text-lg tracking-tight text-neutral-900">
-            {brandName || 'Google Labs'}
+            {brandName || 'Muhammad Nurrudin Praseptyo'}
           </span>
         </div>
 
@@ -110,6 +110,28 @@ export const Header: React.FC<HeaderProps> = ({
               aria-label="GitHub"
             >
               <GithubIcon className="w-4 h-4" />
+            </a>
+          )}
+          {socialLinks.linkedin && (
+            <a
+              href={socialLinks.linkedin}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="w-9 h-9 rounded-full border border-neutral-300/80 bg-white/40 hover:bg-white/80 text-neutral-800 flex items-center justify-center transition-all shadow-xs"
+              aria-label="LinkedIn"
+            >
+              <LinkedinIcon className="w-4 h-4" />
+            </a>
+          )}
+          {socialLinks.instagram && (
+            <a
+              href={socialLinks.instagram}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="w-9 h-9 rounded-full border border-neutral-300/80 bg-white/40 hover:bg-white/80 text-neutral-800 flex items-center justify-center transition-all shadow-xs"
+              aria-label="Instagram"
+            >
+              <InstagramIcon className="w-4 h-4" />
             </a>
           )}
         </div>
